@@ -14,6 +14,12 @@ def index():
     assigned_groups = Executer.instance.device_executer.get_assigned_groups()
     return render_template("home/dashboard.html", segment="dashboard", devices=devices, groups=assigned_groups)
 
+@blueprint.get("/dashboard-childproof")
+@login_required
+def route_dashboard_childproof():
+    devices = Executer.instance.device_executer.get_devices()
+    assigned_groups = Executer.instance.device_executer.get_assigned_groups()
+    return render_template("home/dashboard-childproof.html", segment="dashboard-childproof", devices=devices, groups=assigned_groups)
 
 @blueprint.get("/system_status")
 @login_required
